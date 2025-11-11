@@ -32,7 +32,7 @@
                     </div>
                     <div class="shrink-0">
                         <img src="/{{ $article->preview }}" alt=""
-                             class="w-full lg:w-[500px] 2xl:w-[800px] 2xl:h-[450px] object-cover rounded-[15px]">
+                             class="w-full lg:w-[500px] 2xl:w-[680px] 2xl:h-[450px] object-cover rounded-[15px]">
                     </div>
                 </div>
             </div>
