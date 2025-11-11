@@ -80,17 +80,17 @@
                     <li>
                         <a href="{{ route('home.index') }}"
                            class="block py-3 px-4 font-semibold hover:text-custom-main duration-300"
-                           @click="open=false">Главная</a>
+                           @click="open=false">{{ __('public.home_page') }}</a>
                     </li>
                     <li>
                         <a href="{{ route('projects.index') }}"
                            class="block py-3 px-4 font-semibold hover:text-custom-main duration-300"
-                           @click="open=false">Проекты</a>
+                           @click="open=false">{{ __('public.our_projects') }}</a>
                     </li>
                     <li>
                         <a href="{{ route('news.index') }}"
                            class="block py-3 px-4 font-semibold hover:text-custom-main duration-300"
-                           @click="open=false">Новости</a>
+                           @click="open=false">{{ __('public.news') }}</a>
                     </li>
                 </ul>
             </nav>
