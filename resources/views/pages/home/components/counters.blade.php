@@ -1,36 +1,19 @@
-<!--counter-area end-->
-<section class="counter-area pt-75 pt-lg-30 pt-lg-35 pb-lg-10">
-    <div class="container custom-contianer-one theme-bg">
-        <div class="row gx-4 gx-xxl-5">
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="counter-style-one mb-30" data-aos="fade-up">
-                    <h3>
-                        <span class="counter">1446</span></h3>
-                    <h4>Обученных студентов</h4>
-                </div>
+<div class="bg-custom-halftone py-[50px]">
+    <div class="container mx-auto">
+        <div class="text-center text-[48px] font-bold">
+            <h3>Наши показатели</h3>
+        </div>
+        <div class="relative mt-[50px]">
+            <div class="flex flex-col lg:flex-row items-center justify-between p-[40px] bg-custom-main relative z-[20]">
+                @foreach($counters as $counter)
+                    <div class="text-center text-custom-primary my-[20px] lg:my-[0]">
+                        <div class="text-[36px] font-semibold">{{ $counter->count }}</div>
+                        <div class="text-[22px]">{{ $counter->name_ru }}</div>
+                    </div>
+                @endforeach
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="counter-style-one mb-30" data-aos="fade-up" data-aos-delay="100">
-                    <h3>
-                        <span class="counter">3852</span></h3>
-                    <h4>Сертификатов студентов</h4>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="counter-style-one mb-30" data-aos="fade-up" data-aos-delay="200">
-                    <h3>
-                        <span class="counter">314</span></h3>
-                    <h4>Обученных ППС</h4>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="counter-style-one mb-30" data-aos="fade-up" data-aos-delay="300">
-                    <h3>
-                        <span class="counter">1178</span></h3>
-                    <h4>Сертификатов ППС</h4>
-                </div>
-            </div>
+            <div
+                class="hidden 2xl:block w-full h-full absolute z-[10] left-[20px] top-[20px] bg-custom-main opacity-60"></div>
         </div>
     </div>
-</section>
-<!--counter-area start-->
+</div>

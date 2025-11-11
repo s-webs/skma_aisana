@@ -21,8 +21,8 @@ use MoonShine\Laravel\Pages\ProfilePage;
 
 return [
     'title' => env('MOONSHINE_TITLE', 'MoonShine'),
-    'logo' => 'vendor/moonshine/logo.svg',
-    'logo_small' => 'vendor/moonshine/logo-small.svg',
+    'logo' => 'assets/img/logo/header-logo-1.png',
+    'logo_small' => 'assets/img/icon.png',
 
 
     // Default flags

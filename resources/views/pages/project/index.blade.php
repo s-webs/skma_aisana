@@ -1,49 +1,42 @@
 @extends('layouts.public')
 
 @section('content')
-    <!--page-title-area start-->
-    <div class="page-title-area pt-210 pb-150 pt-lg-120 pb-lg-125 pb-md-100">
-        <img class="page-title-shape shape-one " src="/assets/img/shape/star-10d.svg" alt="shape">
-        <img class="page-title-shape shape-three" src="/assets/img/shape/star-2.svg" alt="shape">
-        <img class="page-title-shape shape-four d-none d-md-inline-block " src="/assets/img/shape/star-4b.svg"
-             alt="shape">
-        <img class="page-title-shape shape-five d-none d-lg-inline-block " src="/assets/img/shape/line-round-9d.svg"
-             alt="shape">
-        <img class="page-title-shape shape-six" src="/assets/img/shape/star-5b.svg" alt="shape">
-        <img class="page-title-shape shape-seven" src="/assets/img/shape/star-5b.svg" alt="shape">
-        <img class="page-title-shape shape-eight d-none d-xl-inline-block" src="/assets/img/page-title/img-01.png"
-             alt="img">
-        <img class="page-title-shape shape-nine d-none d-xl-inline-block" src="/assets/img/page-title/img-02.png"
-             alt="img">
-        <div class="container">
-            <div class="row gx-4 gx-xxl-5 align-items-center">
-                <div class="col-xl-6 col-md-6">
-                    <div class="page-title-wrapper text-md-start text-center">
-                        <h2 class="page-title mb-20">Наши проекты</h2>
+    <div class="container mx-auto px-[30px] my-[30px]">
+        <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-2">
+            @foreach($projects as $project)
+                <div class="bg-custom-main flex flex-col lg:flex-row items-center p-5 rounded-[15px]">
+                    <div class="shrink-0 lg:mr-5 lg:h-full">
+                        <img src="/{{ $project->image }}"
+                             class="w-full lg:w-[250px] lg:h-full object-cover rounded-[8px]"
+                             alt="{{ $project->name_ru }}">
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--page-title-area end-->
-    <!--techy-project-one start-->
-    <section class="techy-project-one pt-145 pb-105 pt-lg-55 pb-lg-15">
-        <div class="container">
-            <div class="grid row gx-4 gx-xxl-5 feature-slider-one pe-0" data-aos="fade-up" data-aos-delay="200">
-                @foreach($projects as $project)
-                    <div class="col-lg-4 col-md-4 col-sm-6 grid-item cat3 cat5">
-                        <div class="feature-item mb-40">
-                            <a class="back-bg" href="{{ route('projects.show', $project->slug_ru) }}">
-                                <img class="w-100" src="/{{ $project->image }}" alt="img"></a>
-                            <h5>
-                                <a href="{{ route('projects.show', $project->slug_ru) }}"></a>
-                            </h5>
-                            <h3><a href="{{ route('projects.show', $project->slug_ru) }}">{{ $project->name_ru }}</a>
-                            </h3>
+                    <div class="flex-1 mt-[20px] lg:mt-[0px]">
+                        <a href="{{ route('projects.show', $project->slug_ru) }}"
+                           class="text-2xl font-bold text-custom-primary hover:text-custom-mainDark duration-300">
+                            {{ $project->name_ru }}
+                        </a>
+                        <div class="text-custom-primary mt-[20px]">
+                            {{ $project->short_description_ru }}
+                        </div>
+                        <div class="mt-[40px]">
+                            <div
+                                class="relative w-full h-[14px] rounded-full bg-white/30 overflow-hidden shadow-inner"
+                                role="progressbar" aria-valuenow="{{ $project->ready }}" aria-valuemin="0" aria-valuemax="100"
+                                aria-label="Готовность">
+                                <div
+                                    class="absolute left-0 top-0 h-full rounded-full bg-custom-mainDark"
+                                    style="width: {{ $project->ready }}%;"></div>
+                            </div>
+                            <div class="text-custom-primary text-lg text-center font-semibold mt-[10px]">
+                                Готовность {{ $project->ready }}%
+                            </div>
+                        </div>
+                        <div class="mt-[20px]">
+                            <a href="{{ route('projects.show', $project->slug_ru) }}" class="block text-center text-lg font-semibold text-custom-main hover:text-white px-[15px] py-[10px] rounded-[8px] bg-white hover:bg-custom-mainDark duration-300">Подробнее</a>
                         </div>
                     </div>
-                @endforeach
-            </div>
+                </div>
+            @endforeach
         </div>
-    </section>
+    </div>
 @endsection

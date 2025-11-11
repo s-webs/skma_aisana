@@ -1,31 +1,45 @@
 @extends('layouts.public')
 
 @section('content')
-    @include('pages.project.components.titleArea', compact('project'))
-    <!--project-details-wrapper start-->
-    <section class="project-details-wrapper pt-145 pb-30 pt-lg-60 pb-lg-20">
-        <div class="container">
-            <div class="row gx-4 gx-xxl-5 align-items-center justify-content-center">
-                <div class="col-lg-12">
-{{--                    @include('pages.project.components.projectInformation', compact('project'))--}}
-                </div>
-            </div>
-            <div class="row gx-4 gx-xxl-5">
-                <div class="col">
-                    <div class="widget-left-section">
-                        <div style="width: 100%; text-align: center;">
-                            <img src="/{{ $project->image }}" alt="" style="max-height: 500px; width: auto;">
+    <div class="my-[50px]">
+        <div class="bg-custom-main">
+            <div class="container px-[30px] mx-auto py-[30px]">
+                <div class="flex flex-col lg:flex-row lg:items-stretch justify-start">
+                    <div class="shrink-0 lg:mr-[30px] lg:h-[450px] 2xl:h-[450px]">
+                        <img
+                            src="/{{ $project->image }}"
+                            alt=""
+                            class="w-full lg:w-[500px] 2xl:w-[600px] h-full object-cover rounded-[15px]">
+                    </div>
+                    <div class="w-full mt-[30px] text-center lg:mt-[0]">
+                        <div class="flex flex-col h-full">
+                            <h1 class="text-custom-primary text-2xl lg:text-[42px] font-bold">
+                                {{ $project->name_ru }}
+                            </h1>
+                            <div class="text-custom-primary text-2xl mt-[15px] flex-1 overflow-y-auto">
+                                {{ $project->short_description_ru }}
+                            </div>
+                            <div class="mt-[20px]">
+                                <div
+                                    class="relative w-full h-[14px] rounded-full bg-white/30 overflow-hidden shadow-inner"
+                                    role="progressbar" aria-valuenow="{{ $project->ready }}" aria-valuemin="0" aria-valuemax="100"
+                                    aria-label="Готовность">
+                                    <div
+                                        class="absolute left-0 top-0 h-full rounded-full bg-custom-mainDark"
+                                        style="width: {{ $project->ready }}%;"></div>
+                                </div>
+                                <div class="text-custom-primary text-2xl text-center font-semibold mt-[10px]">
+                                    Готовность {{ $project->ready }}%
+                                </div>
+                            </div>
                         </div>
-                        <hr>
-                        <h3 class="sect-title-two fw-bold mb-20 mt-55">Описание</h3>
-                        <div class="text-white">{!! $project->text_ru !!}</div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!--project-details-wrapper end-->
-    @if($relatedProjects->count() > 0)
-        @include('pages.project.components.relatedProjects', compact('relatedProjects'))
-    @endif
+
+        <div class="container px-[30px] mx-auto text-lg lg:text-[22px] mt-[30px]">
+            {!! $project->text_ru !!}
+        </div>
+    </div>
 @endsection

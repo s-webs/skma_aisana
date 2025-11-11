@@ -1,70 +1,102 @@
-<!-- header-area start -->
-<header class="theme-main-menu py-lg-4">
-    <div class="main-header-area">
-        <div class="container custom-container-nav">
-            <div class="row gx-4 gx-xxl-5 align-items-center">
-                <div class="col-xxl-3 col-xl-2 col-lg-2 col-6 text-start">
-                    <div class="logo-area">
-                        <a href="/"><img src="/assets/img/logo/header-logo-1.png" alt="Header-logo"></a>
-                    </div>
+<header x-data="{ open:false }" @keydown.escape.window="open=false" class="flex relative z-[20]">
+    <div class="container px-[30px] mx-auto pt-[30px]">
+        <!-- Верхняя «пилюля» -->
+        <div class="flex items-center justify-between shadow-xl rounded-[100px] overflow-hidden bg-white">
+            <div class="flex items-center">
+                <div class="bg-custom-main px-[48px] py-[15px] rounded-l-[100px]">
+                    <a href="{{ route('home.index') }}"><img src="/assets/img/logo.png" alt="" class="h-[44px]"></a>
                 </div>
-                <div class="col-xxl-6 col-xl-6 col-lg-6 d-none d-lg-block">
-                    <nav class="navbar navbar-expand-lg">
-                        <div class="container-fluid">
-                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                    aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                <ul class="navbar-nav mb-2 mb-lg-0 ps-1">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="/">Главная</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('projects.index') }}">Проекты</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('news.index') }}">Новости</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-                <div class="col-xxl-3 col-xl-4 col-lg-4 col-6 text-end">
-                    <ul class="right-nav mb-0 d-flex align-items-center justify-content-end">
-                        {{--                        <li>--}}
-                        {{--                            <div class="d-none d-xxl-inline-block right-language pr-40">--}}
-                        {{--                                <div class="dropdown">--}}
-                        {{--                                    <a class="language-btn dropdown-toggle" href="#" role="button"--}}
-                        {{--                                       id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">--}}
-                        {{--                                        RU--}}
-                        {{--                                        <i class="fal fa-chevron-down"></i>--}}
-                        {{--                                    </a>--}}
-                        {{--                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">--}}
-                        {{--                                        <li>--}}
-                        {{--                                            <a class="dropdown-item" href="#">KZ</a>--}}
-                        {{--                                        </li>--}}
-                        {{--                                        <li>--}}
-                        {{--                                            <a class="dropdown-item" href="#">EN</a>--}}
-                        {{--                                        </li>--}}
-                        {{--                                    </ul>--}}
-                        {{--                                </div>--}}
-                        {{--                            </div>--}}
-                        {{--                        </li>--}}
-                        <li class="custom-hidden-xl">
-                            <div class="hamburger-menu">
-                                <a class="round-menu" href="javascript:void(0);">
-                                    <i class="bi bi-list"></i>
-                                </a>
-                            </div>
+
+                <!-- Десктоп-меню -->
+                <nav class="hidden lg:block">
+                    <ul class="flex items-center">
+                        <li class="font-semibold text-[18px] ml-[30px]">
+                            <a href="{{ route('home.index') }}" class="hover:text-custom-main duration-300">Главная</a>
+                        </li>
+                        <li class="font-semibold text-[18px] ml-[30px]">
+                            <a href="{{ route('projects.index') }}" class="hover:text-custom-main duration-300">Проекты</a>
+                        </li>
+                        <li class="font-semibold text-[18px] ml-[30px]">
+                            <a href="{{ route('news.index') }}" class="hover:text-custom-main duration-300">Новости</a>
                         </li>
                     </ul>
-                </div>
+                </nav>
+            </div>
+
+            <div class="flex items-center">
+                <!-- Десктоп-языки -->
+                <nav class="hidden lg:block">
+                    <ul class="flex items-center">
+                        <li class="font-semibold text-[18px] mr-[30px]">
+                            <a href="#" class="hover:text-custom-main duration-300">KZ</a>
+                        </li>
+                        <li class="font-semibold text-[18px] mr-[30px]">
+                            <a href="#" class="hover:text-custom-main duration-300">RU</a>
+                        </li>
+                        <li class="font-semibold text-[18px] mr-[30px]">
+                            <a href="#" class="hover:text-custom-main duration-300">EN</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- Кнопка бургера -->
+                <button
+                    type="button"
+                    class="lg:hidden inline-flex items-center justify-center m-[10px] mr-[16px] p-3 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-custom-main"
+                    @click="open = !open"
+                    :aria-expanded="open"
+                    aria-controls="mobileMenu"
+                >
+                    <span class="sr-only">Открыть меню</span>
+                    <!-- Иконки -->
+                    <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                         viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                    <svg x-show="open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                         viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Мобильная панель -->
+        <div
+            id="mobileMenu"
+            x-cloak
+            x-show="open"
+            x-transition.origin.top
+            class="lg:hidden mt-3 shadow-xl rounded-2xl overflow-hidden bg-white"
+        >
+            <nav>
+                <ul class="flex flex-col p-4">
+                    <li>
+                        <a href="{{ route('home.index') }}"
+                           class="block py-3 px-4 font-semibold hover:text-custom-main duration-300"
+                           @click="open=false">Главная</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('projects.index') }}"
+                           class="block py-3 px-4 font-semibold hover:text-custom-main duration-300"
+                           @click="open=false">Проекты</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('news.index') }}"
+                           class="block py-3 px-4 font-semibold hover:text-custom-main duration-300"
+                           @click="open=false">Новости</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="border-t">
+                <ul class="flex gap-2 p-4">
+                    <li><a href="#" class="font-semibold hover:text-custom-main duration-300" @click="open=false">KZ</a></li>
+                    <li><a href="#" class="font-semibold hover:text-custom-main duration-300" @click="open=false">RU</a></li>
+                    <li><a href="#" class="font-semibold hover:text-custom-main duration-300" @click="open=false">EN</a></li>
+                </ul>
             </div>
         </div>
     </div>
-    <!-- /.theme-main-menu -->
 </header>
-<!-- header-area end -->

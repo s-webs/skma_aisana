@@ -33,6 +33,8 @@ use MoonShine\UI\Components\{Breadcrumbs,
 use App\MoonShine\Resources\ArticleResource;
 use MoonShine\MenuManager\MenuItem;
 use App\MoonShine\Resources\ProjectResource;
+use App\MoonShine\Resources\CountersResource;
+use App\MoonShine\Resources\StepResource;
 
 final class MoonShineLayout extends AppLayout
 {
@@ -49,6 +51,8 @@ final class MoonShineLayout extends AppLayout
             ...parent::menu(),
             MenuItem::make('Articles', ArticleResource::class),
             MenuItem::make('Projects', ProjectResource::class),
+            MenuItem::make('Counters', CountersResource::class),
+            MenuItem::make('Steps', StepResource::class),
         ];
     }
 

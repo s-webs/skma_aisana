@@ -1,46 +1,47 @@
 @extends('layouts.public')
 
-@section('content')
-    <!--page-title-area start-->
-    <div class="page-title-area pt-210 pb-150 pt-lg-120 pb-lg-125 pb-md-100">
-        <img class="page-title-shape shape-one " src="/assets/img/shape/star-10d.svg" alt="shape">
-        <img class="page-title-shape shape-three" src="/assets/img/shape/star-2.svg" alt="shape">
-        <img class="page-title-shape shape-four d-none d-md-inline-block " src="/assets/img/shape/star-4b.svg"
-             alt="shape">
-        <img class="page-title-shape shape-five d-none d-lg-inline-block " src="/assets/img/shape/line-round-9d.svg"
-             alt="shape">
-        <img class="page-title-shape shape-six" src="/assets/img/shape/star-5b.svg" alt="shape">
-        <img class="page-title-shape shape-seven" src="/assets/img/shape/star-5b.svg" alt="shape">
-        <img class="page-title-shape shape-eight d-none d-xl-inline-block" src="/assets/img/page-title/img-01.png"
-             alt="img">
-        <img class="page-title-shape shape-nine d-none d-xl-inline-block" src="/assets/img/page-title/img-02.png"
-             alt="img">
+@push('styles')
+    <style>
+        /* Чтобы не вылезали за контейнер на любом размере */
+        .content-news img{
+            display:block;
+            max-width:100%;
+            height:auto;
+            border-radius:15px;
+            margin:0 auto;
+        }
 
-        <div class="container">
-            <div class="row gx-4 gx-xxl-5 align-items-center">
-                <div class="col-xl-6 col-md-6">
-                    <div class="page-title-wrapper text-md-start text-center">
-                        <h2 class="page-title mb-20">{{ $article->title_ru }}</h2>
+        /* < lg по Tailwind: смартфоны и планшеты */
+        @media (max-width:1023.98px){
+            .content-news img{
+                width:100% !important; /* перебьёт inline-атрибуты */
+            }
+        }
+    </style>
+@endpush
+
+
+@section('content')
+    <div class="my-[50px]">
+        <div class="bg-custom-main">
+            <div class="container px-[30px] mx-auto py-[30px]">
+                <div class="flex flex-col-reverse lg:flex-row items-center justify-between">
+                    <div class="mr-[30px]">
+                        <div class="mt-[30px] lg:mt-[0]">
+                            <h1 class="text-custom-primary text-xl lg:text-[42px] font-bold">{{ $article->title_ru }}</h1>
+                        </div>
+                        <div class="mt-[30px] text-md lg:text-[24px] text-custom-halftone font-semibold">
+                            {{ $article->created_at }}
+                        </div>
+                    </div>
+                    <div class="shrink-0">
+                        <img src="/{{ $article->preview }}" alt="" class="w-full lg:w-[500px] 2xl:w-[800px] 2xl:h-[450px] object-cover rounded-[15px]">
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="container px-[30px] mx-auto text-lg lg:text-[22px] mt-[30px] content-news">
+            {!! $article->text_ru !!}
         </div>
     </div>
-    <!--page-title-area end-->
-    <!--blog-single-area start-->
-    <section class="blog-single-area pt-150 pb-105 pt-lg-60 pb-lg-15">
-        <div class="container">
-            <div class="row gx-4 gx-xxl-5">
-                <div class="col">
-                    <div class="blog-style-five mb-25">
-                        <div class="blog-thumb mb-40">
-                            <img class="w-100" src="/{{ $article->preview }}" alt="img">
-                        </div>
-                        {!! $article->text_ru !!}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--blog-single-area end-->
 @endsection

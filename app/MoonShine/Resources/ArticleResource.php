@@ -37,6 +37,10 @@ class ArticleResource extends ModelResource
     {
         return [
             ID::make()->sortable(),
+            Image::make('Preview', 'preview'),
+            Text::make('Заголовок', 'title_ru'),
+            Date::make('Дата', 'created_at')->badge('blue')->sortable(),
+            Switcher::make('Опубликовано', 'is_published')
         ];
     }
 

@@ -13,6 +13,8 @@ use App\MoonShine\Resources\MoonShineUserResource;
 use App\MoonShine\Resources\MoonShineUserRoleResource;
 use App\MoonShine\Resources\ArticleResource;
 use App\MoonShine\Resources\ProjectResource;
+use App\MoonShine\Resources\CountersResource;
+use App\MoonShine\Resources\StepResource;
 
 class MoonShineServiceProvider extends ServiceProvider
 {
@@ -29,6 +31,8 @@ class MoonShineServiceProvider extends ServiceProvider
                 MoonShineUserRoleResource::class,
                 ArticleResource::class,
                 ProjectResource::class,
+                CountersResource::class,
+                StepResource::class,
             ])
             ->pages([
                 ...$config->getPages(),

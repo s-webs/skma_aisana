@@ -1,21 +1,20 @@
-<!--theme-banner-one start-->
-<div class="theme-banner-one pt-205 pb-35 pt-lg-120 pt-md-80 pt-xs-60">
-    <img class="banner-shape shape-one" src="/assets/img/shape/line-1.svg" alt="shape">
-    <img class="banner-shape shape-two d-none d-lg-inline-block" src="/assets/img/shape/star-1.svg" alt="shape">
-    <img class="banner-shape shape-three d-none d-lg-inline-block" src=" /assets/img/shape/star-2.svg"
-         alt="shape">
-    <img class="banner-shape shape-four" src="/assets/img/shape/line-round-1.svg" alt="shape">
-    <div class="container">
-        <div class="row gx-4 gx-xxl-5 align-items-center justify-content-center">
-            <div class="col-11">
-                <div class="theme__content text-center">
-                    <h1 class="main-title-one">
-                        <span>AI-Sana</span>
-                    </h1>
-                    <a class="theme_btn" href="contact.html">Презентация</a>
+<div class="h-[560px] w-full relative">
+    <div class="h-full">
+        <div class="z-[10] absolute w-full h-full bottom-0 left-0">
+            <img src="/assets/img/pattern_05.png" alt="" class="w-full h-full lg:object-cover object-cover lg:object-top">
+        </div>
+        <div class="container mx-auto h-full relative z-[20]">
+            <div class="h-full">
+                <div class="flex h-full justify-center items-center">
+                    <div class="text-center text-[48px] font-bold">
+                        <h1 class="text-custom-main">AI-SANA</h1>
+                        <h2 class="text-custom-mainDark lg:text-custom-secondary">Трамплин технологий</h2>
+{{--                        <div class="mt-[50px]">--}}
+{{--                            <a href="#" class="text-[24px] font-medium border-2 border-custom-main bg-white hover:bg-custom-main text-custom-main hover:text-custom-primary transition-colors duration-300 rounded-[12px] px-[50px] py-[12px]">Презентация</a>--}}
+{{--                        </div>--}}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!--theme-banner-one end-->

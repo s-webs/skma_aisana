@@ -1,49 +1,51 @@
-<!--blog-area start-->
-<section class="blog-area slick-nav pt-100 pb-100 pt-lg-55 pb-lg-60">
-    <div class="container">
-        <div class="row gx-4 gx-xxl-5 align-items-center">
-            <div class="col-xl-5 col-lg-6 col-md-8" data-aos="fade-up">
-                <div class="section-title text-center text-md-start mb-60">
-                    <h3 class="sect-title mb-25">Новости</h3>
+<div class="relative bg-custom-mainDark">
+    <div class="absolute z-[10] w-full h-full top-0 left-0 overflow-hidden">
+        <img src="/assets/img/pattern_06.png" alt="" class="w-full h-full object-cover opacity-50">
+    </div>
+    <div class="container mx-auto px-[30px] lg:px-[100px] relative z-[20] py-[50px]">
+        <div class="flex flex-col lg:flex-row justify-between">
+            <div class="w-full lg:w-[600px] 2xl:w-[800px] lg:mr-[30px]">
+                <div class="mb-[30px]">
+                    <img src="/{{ $lastArticle->preview }}" alt=""
+                         class="w-full rounded-[15px]">
+                </div>
+                <div class="mb-[15px]">
+                    <h2 class="text-xl lg:text-[42px] font-bold text-custom-primary">{{ $lastArticle->title_ru }}</h2>
+                </div>
+                <div class="flex items-center text-custom-secondary text-[16px] mb-[40px]">
+                    <i class="ph ph-calendar-dots"></i>
+                    <span class="ml-[10px]">{{ $lastArticle->created_at }}</span>
+                </div>
+                <div>
+                    <a href="{{ route('news.show', $lastArticle->slug_ru) }}"
+                       class="bg-custom-main rounded-[8px] px-[25px] py-[15px] text-lg lg:text-[24px] font-semibold text-custom-primary hover:bg-custom-mainDark transition-colors duration-300">
+                        <span class="align-top">Читать статью</span>
+                        <i class="ph ph-caret-right align-middle inline-block leading-none"></i>
+                    </a>
                 </div>
             </div>
-            <div
-                class="col-xl-7 col-lg-6 col-md-4 d-flex justify-content-md-end justify-content-center pb-40">
-                <div class="slick-nav">
-                    <div class="prev_b1 mr-20">
-                        <i class="bi bi-chevron-left"></i>
-                    </div>
-                    <div class="next_b1">
-                        <i class="bi bi-chevron-right"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row blog-active-one" data-aos="fade-up" data-aos-delay="100">
-            @foreach($articles as $article)
-                <div class="col-lg-4">
-                    <div class="blog-style-one">
-                        <div class="blog-thumb">
-                            <img class="w-100" src="/{{ $article->preview }}" alt="img"
-                                 style="width: 420px; height: 460px; object-fit: cover;">
-                        </div>
-                        <div class="blog-content">
-                            <h4>
-                                <a class="blog-title" href="{{ route('news.show', $article->slug_ru) }}">
-                                    {{ $article->title_ru }}
-                                </a>
-                            </h4>
-                            <div class="blog-meta">
-                                <a href="#">
-                                    <i class="bi bi-clock"></i>
-                                    {{ $article->created_at }}
-                                </a>
+            <div class="shrink-0 flex-1 mt-[30px] lg:mt-[0]">
+                <div class="text-[32px] text-custom-primary font-semibold border-b-3">Новости</div>
+                @foreach($articles as $article)
+                    <div class="mt-[30px]">
+                        <div class="flex">
+                            <div class="w-[120px] h-[120px] shrink-0 mr-[15px]">
+                                <img src="/{{ $article->preview }}" alt=""
+                                     class="w-full h-full object-cover rounded-[12px]">
+                            </div>
+                            <div class="flex flex-col justify-between">
+                                <div><a href="{{ route('news.show', $article->slug_ru) }}" class="text-custom-primary text-sm lg:text-lg font-semibold hover:text-custom-main transition-colors duration-300">{{ $article->title_ru }}</a></div>
+                                <div>
+                                    <a href="{{ route('news.show', $article->slug_ru) }}"
+                                       class="bg-custom-main rounded-[5px] px-[10px] py-[5px] text-sm lg:text-[18px] font-semibold text-custom-primary hover:bg-custom-mainDark transition-colors duration-300">
+                                        <span class="align-top">Читать</span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
     </div>
-</section>
-<!--blog-area end-->
+</div>
