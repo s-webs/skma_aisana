@@ -1,6 +1,6 @@
 <div class="bg-custom-halftone py-[50px]">
     <div class="container mx-auto">
-        <div class="text-center text-[48px] font-bold">
+        <div class="text-center text-2xl lg:text-[48px] font-bold">
             <h3>{{ __('public.stages_implementation') }}</h3>
         </div>
         <div class="mt-[50px] px-[50px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[20px] lg:gap-[30px]">

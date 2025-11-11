@@ -1,6 +1,6 @@
 <div class="bg-custom-halftone py-[50px]">
     <div class="container mx-auto">
-        <div class="text-center text-[48px] font-bold">
+        <div class="text-center text-2xl lg:text-[48px] font-bold">
             <h3>{{ __('public.our_indicators') }}</h3>
         </div>
         <div class="relative mt-[50px]">
