@@ -1,14 +1,14 @@
 <div class="bg-custom-halftone py-[50px]">
     <div class="container mx-auto">
         <div class="text-center text-[48px] font-bold">
-            <h3>Наши показатели</h3>
+            <h3>{{ __('public.our_indicators') }}</h3>
         </div>
         <div class="relative mt-[50px]">
             <div class="flex flex-col lg:flex-row items-center justify-between p-[40px] bg-custom-main relative z-[20]">
                 @foreach($counters as $counter)
                     <div class="text-center text-custom-primary my-[20px] lg:my-[0]">
                         <div class="text-[36px] font-semibold">{{ $counter->count }}</div>
-                        <div class="text-[22px]">{{ $counter->name_ru }}</div>
+                        <div class="text-[22px]">{{ $counter->name }}</div>
                     </div>
                 @endforeach
             </div>

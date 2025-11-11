@@ -9,7 +9,7 @@
                 <div class="flex h-full justify-center items-center">
                     <div class="text-center text-[48px] font-bold">
                         <h1 class="text-custom-main">AI-SANA</h1>
-                        <h2 class="text-custom-mainDark lg:text-custom-secondary">Трамплин технологий</h2>
+                        <h2 class="text-custom-mainDark lg:text-custom-secondary">{{ __('public.springboard_technology') }}</h2>
                         {{--                        <div class="mt-[50px]">--}}
                         {{--                            <a href="#" class="text-[24px] font-medium border-2 border-custom-main bg-white hover:bg-custom-main text-custom-main hover:text-custom-primary transition-colors duration-300 rounded-[12px] px-[50px] py-[12px]">Презентация</a>--}}
                         {{--                        </div>--}}

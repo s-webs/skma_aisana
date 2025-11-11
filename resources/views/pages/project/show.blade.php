@@ -14,22 +14,23 @@
                     <div class="w-full mt-[30px] text-center lg:mt-[0]">
                         <div class="flex flex-col h-full">
                             <h1 class="text-custom-primary text-2xl lg:text-[42px] font-bold">
-                                {{ $project->name_ru }}
+                                {{ $project->name }}
                             </h1>
                             <div class="text-custom-primary text-2xl mt-[15px] flex-1 overflow-y-auto">
-                                {{ $project->short_description_ru }}
+                                {{ $project->short_description }}
                             </div>
                             <div class="mt-[20px]">
                                 <div
                                     class="relative w-full h-[14px] rounded-full bg-white/30 overflow-hidden shadow-inner"
-                                    role="progressbar" aria-valuenow="{{ $project->ready }}" aria-valuemin="0" aria-valuemax="100"
+                                    role="progressbar" aria-valuenow="{{ $project->ready }}" aria-valuemin="0"
+                                    aria-valuemax="100"
                                     aria-label="Готовность">
                                     <div
                                         class="absolute left-0 top-0 h-full rounded-full bg-custom-mainDark"
                                         style="width: {{ $project->ready }}%;"></div>
                                 </div>
                                 <div class="text-custom-primary text-2xl text-center font-semibold mt-[10px]">
-                                    Готовность {{ $project->ready }}%
+                                    {{ __('public.readiness ') }} {{ $project->ready }}%
                                 </div>
                             </div>
                         </div>
@@ -39,7 +40,7 @@
         </div>
 
         <div class="container px-[30px] mx-auto text-lg lg:text-[22px] mt-[30px]">
-            {!! $project->text_ru !!}
+            {!! $project->text !!}
         </div>
     </div>
 @endsection

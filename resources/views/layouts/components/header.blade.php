@@ -1,3 +1,7 @@
+@php
+    $labels = ['kk' => 'ҚАЗ', 'ru' => 'РУС', 'en' => 'ENG'];
+@endphp
+
 <header x-data="{ open:false }" @keydown.escape.window="open=false" class="flex relative z-[20]">
     <div class="container px-[30px] mx-auto pt-[30px]">
         <!-- Верхняя «пилюля» -->
@@ -11,13 +15,14 @@
                 <nav class="hidden lg:block">
                     <ul class="flex items-center">
                         <li class="font-semibold text-[18px] ml-[30px]">
-                            <a href="{{ route('home.index') }}" class="hover:text-custom-main duration-300">Главная</a>
+                            <a href="{{ route('home.index') }}" class="hover:text-custom-main duration-300">{{ __('public.home_page') }}</a>
                         </li>
                         <li class="font-semibold text-[18px] ml-[30px]">
-                            <a href="{{ route('projects.index') }}" class="hover:text-custom-main duration-300">Проекты</a>
+                            <a href="{{ route('projects.index') }}"
+                               class="hover:text-custom-main duration-300">{{ __('public.our_projects') }}</a>
                         </li>
                         <li class="font-semibold text-[18px] ml-[30px]">
-                            <a href="{{ route('news.index') }}" class="hover:text-custom-main duration-300">Новости</a>
+                            <a href="{{ route('news.index') }}" class="hover:text-custom-main duration-300">{{ __('public.news') }}</a>
                         </li>
                     </ul>
                 </nav>
@@ -27,15 +32,14 @@
                 <!-- Десктоп-языки -->
                 <nav class="hidden lg:block">
                     <ul class="flex items-center">
-                        <li class="font-semibold text-[18px] mr-[30px]">
-                            <a href="#" class="hover:text-custom-main duration-300">KZ</a>
-                        </li>
-                        <li class="font-semibold text-[18px] mr-[30px]">
-                            <a href="#" class="hover:text-custom-main duration-300">RU</a>
-                        </li>
-                        <li class="font-semibold text-[18px] mr-[30px]">
-                            <a href="#" class="hover:text-custom-main duration-300">EN</a>
-                        </li>
+                        @foreach($labels as $loc => $label)
+                            <li class="font-semibold text-[18px] mr-[30px]">
+                                <a href="{{ localized_switch_url($loc) }}"
+                                   class="hover:text-custom-main duration-300 {{ app()->getLocale()===$loc ? 'underline' : '' }}">
+                                    {{ $label }}
+                                </a>
+                            </li>
+                        @endforeach
                     </ul>
                 </nav>
 
@@ -92,9 +96,13 @@
             </nav>
             <div class="border-t">
                 <ul class="flex gap-2 p-4">
-                    <li><a href="#" class="font-semibold hover:text-custom-main duration-300" @click="open=false">KZ</a></li>
-                    <li><a href="#" class="font-semibold hover:text-custom-main duration-300" @click="open=false">RU</a></li>
-                    <li><a href="#" class="font-semibold hover:text-custom-main duration-300" @click="open=false">EN</a></li>
+                    @foreach($labels as $loc => $label)
+                        <li>
+                            <a href="{{ localized_switch_url($loc) }}"
+                               class="font-semibold hover:text-custom-main duration-300"
+                               @click="open=false">{{ $label }}</a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </div>

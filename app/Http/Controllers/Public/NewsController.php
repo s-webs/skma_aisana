@@ -8,15 +8,19 @@ use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
-    public function index(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+    public function index()
     {
-        $articles = Article::query()->orderBy('created_at', 'desc')->get();
+        $articles = Article::query()
+            ->published()
+            ->latest('created_at')
+            ->get();
+
         return view('pages.news.index', compact('articles'));
     }
 
-    public function show($slug): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
+    // Используем имплиситный роут-модель-биндинг по slug_{locale}
+    public function show(Article $article)
     {
-        $article = Article::query()->where('slug_ru', $slug)->firstOrFail();
         return view('pages.news.show', compact('article'));
     }
 }

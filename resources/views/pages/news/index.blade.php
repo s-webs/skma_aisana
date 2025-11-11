@@ -8,14 +8,14 @@
                     <div class="shrink-0 mr-5">
                         <img src="/{{ $article->preview }}"
                              class="w-[150px] h-[150px] object-cover rounded-[8px]"
-                             alt="{{ $article->title_ru }}">
+                             alt="{{ $article->title }}">
                     </div>
                     <div class="flex-1">
-                        <a href="{{ route('news.show', $article->slug_ru) }}"
+                        <a href="{{ route('news.show', $article) }}"
                            class="text-lg font-semibold text-custom-primary hover:text-custom-mainDark duration-300">
-                            {{ $article->title_ru }}
+                            {{ $article->title }}
                         </a>
-                        <div class="text-custom-halftone mt-[20px]">{{ $article->created_at }}</div>
+                        <div class="text-custom-halftone mt-[20px]">{{ optional($article->created_at)->format('d.m.Y') }}</div>
                     </div>
                 </div>
             @endforeach
