@@ -10,7 +10,7 @@ return [
     'stages_implementation' => 'Іске асыру кезеңдері',
     'read_article' => 'Мақаланы оқу',
     'read' => 'Оқу',
-    'details' => 'Подробнее',
+    'details' => 'Толығырақ',
     'readiness ' => 'Дайындық',
 
 ];
